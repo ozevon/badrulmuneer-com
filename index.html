@@ -1,0 +1,1135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Syed Badrul Muneer — Engineer, Builder, Product Thinker</title>
+<meta name="theme-color" content="#F6F1E7">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2064%2064%27%3E%3Crect%20width%3D%2764%27%20height%3D%2764%27%20rx%3D%2714%27%20fill%3D%27%230F1E33%27%2F%3E%3Cpolygon%20points%3D%2714%2C33%2052%2C13%2036%2C53%2029%2C39%27%20fill%3D%27%23D9AC4E%27%2F%3E%3C%2Fsvg%3E">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.badrulmuneer.com/">
+<meta property="og:title" content="Syed Badrul Muneer — Engineer, Builder, Product Thinker">
+<meta property="og:description" content="Product Manager, AI & Semiconductors at Intel. Embedded and firmware engineer turned product thinker. 12 years, 2014—present. Glendale, Arizona.">
+<meta property="og:image" content="https://www.badrulmuneer.com/og-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Syed Badrul Muneer — Engineer, Builder, Product Thinker">
+<meta name="twitter:description" content="Product Manager, AI & Semiconductors at Intel. Embedded and firmware engineer turned product thinker. 12 years, 2014—present. Glendale, Arizona.">
+<meta name="twitter:image" content="https://www.badrulmuneer.com/og-cover.jpg">
+<meta name="description" content="Syed Badrul Muneer — Product Manager, AI & Semiconductors at Intel. Embedded and firmware engineer turned product thinker. 12 years, 2014—present. Glendale, Arizona.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+<style>
+:root{
+  --paper:#F6F1E7;
+  --paper-deep:#EEE6D3;
+  --card:#FBF8EF;
+  --ink:#0F1E33;
+  --ink-2:#24344D;
+  --sub:#5C6B82;
+  --brass:#B08A3C;
+  --brass-deep:#8C6E2C;
+  --brass-soft:rgba(176,138,60,.14);
+  --line:rgba(15,30,51,.16);
+  --line-soft:rgba(15,30,51,.09);
+  --shadow:0 18px 44px rgba(15,30,51,.10);
+  --radius:16px;
+  color-scheme:light;
+}
+[data-theme="dark"]{
+  --paper:#0C1526;
+  --paper-deep:#091120;
+  --card:#13213B;
+  --ink:#F0E9D6;
+  --ink-2:#D9D0B8;
+  --sub:#9AA8C2;
+  --brass:#D9AC4E;
+  --brass-deep:#E7BE62;
+  --brass-soft:rgba(217,172,78,.16);
+  --line:rgba(240,233,214,.16);
+  --line-soft:rgba(240,233,214,.09);
+  --shadow:0 18px 44px rgba(0,0,0,.42);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:'Space Grotesk',system-ui,-apple-system,sans-serif;
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  background-image:
+    radial-gradient(1200px 500px at 85% -5%, rgba(176,138,60,.07), transparent 60%),
+    radial-gradient(900px 420px at -10% 30%, rgba(15,30,51,.045), transparent 60%);
+  background-attachment:fixed;
+  overflow-x:hidden;
+}
+.mono{font-family:'JetBrains Mono',ui-monospace,monospace}
+a{color:inherit}
+button{font-family:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--brass);outline-offset:3px;border-radius:4px}
+::selection{background:rgba(176,138,60,.28)}
+
+/* ---------- fixed pill nav ---------- */
+#nav{
+  position:fixed; top:14px; left:50%; transform:translateX(-50%); z-index:200;
+  display:flex; align-items:center; gap:4px;
+  background:rgba(246,241,231,.86); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+  border:1px solid var(--line); border-radius:999px;
+  padding:6px 8px; box-shadow:0 10px 30px rgba(15,30,51,.10);
+  max-width:94vw;
+}
+/* ---------- theme toggle ---------- */
+.theme-toggle{background:none; border:0; cursor:pointer; padding:6px 4px; margin-left:2px; line-height:0; border-radius:999px}
+.theme-toggle:focus-visible{outline:2px solid var(--brass); outline-offset:2px}
+.tt-track{display:block; position:relative; width:54px; height:28px; border-radius:999px; border:1px solid var(--line);
+  background:linear-gradient(100deg,#F2D9A4 0%,#E3B85C 55%,#B08A3C 100%);
+  box-shadow:inset 0 1px 3px rgba(15,30,51,.20); transition:background .45s ease}
+.tt-knob{position:absolute; top:2px; left:2px; width:22px; height:22px; border-radius:50%;
+  background:#FBF8EF; color:#8C6E2C; display:flex; align-items:center; justify-content:center; font-size:12px;
+  box-shadow:0 2px 6px rgba(15,30,51,.35);
+  transition:transform .38s cubic-bezier(.55,1.45,.45,1), background .45s ease, color .45s ease}
+[data-theme="dark"] .tt-track{background:linear-gradient(100deg,#2A3D66 0%,#16273F 60%,#0B1425 100%)}
+[data-theme="dark"] .tt-knob{transform:translateX(26px); background:#1B2B4D; color:#EDE6D4}
+[data-theme="dark"] #nav{background:rgba(12,21,38,.88); box-shadow:0 10px 30px rgba(0,0,0,.35)}
+[data-theme="dark"] .leaflet-tile-pane{filter:invert(1) hue-rotate(180deg) brightness(.94) contrast(.94)}
+@media (prefers-reduced-motion:no-preference){
+  body.tm, body.tm *{transition:background-color .45s ease, border-color .45s ease, color .45s ease}
+}
+#nav .brand{
+  display:flex; align-items:center; gap:7px; text-decoration:none;
+  font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:600; letter-spacing:.08em;
+  padding:7px 10px; color:var(--ink);
+}
+#nav .brand .mark{
+  width:22px;height:22px;border-radius:7px; background:var(--ink); color:var(--paper);
+  display:grid; place-items:center; font-size:9px; font-weight:600;
+}
+.nav-links{display:flex; align-items:center; gap:2px; overflow-x:auto; scrollbar-width:none}
+.nav-links::-webkit-scrollbar{display:none}
+.nav-links a{
+  text-decoration:none; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.06em;
+  color:var(--sub); padding:8px 11px; border-radius:999px; white-space:nowrap;
+  transition:color .2s ease, background .2s ease;
+}
+.nav-links a:hover{color:var(--ink); background:rgba(15,30,51,.06)}
+.nav-links a.active{color:var(--brass-deep); background:var(--brass-soft); font-weight:600}
+
+/* ---------- routes ---------- */
+main{display:block}
+.route{display:none; padding:118px 22px 30px; min-height:100dvh}
+.route.active{display:block}
+.wrap{max-width:1060px; margin:0 auto}
+.kicker{
+  display:inline-flex; align-items:center; gap:9px;
+  font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.22em;
+  color:var(--brass-deep); margin-bottom:18px; font-weight:600;
+}
+.kicker .k-plane{font-size:12px}
+.rule{height:1px; background:var(--line); border:0; margin:26px 0}
+
+/* ---------- buttons ---------- */
+.btn{
+  display:inline-flex; align-items:center; gap:8px; text-decoration:none;
+  font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.06em; font-weight:600;
+  padding:13px 22px; border-radius:999px; border:1px solid var(--ink);
+  transition:transform .18s ease, box-shadow .18s ease, background .18s ease, color .18s ease;
+}
+.btn-primary{background:var(--ink); color:var(--paper)}
+.btn-primary:hover{transform:translateY(-2px); box-shadow:0 12px 26px rgba(15,30,51,.25)}
+.btn-ghost{background:transparent; color:var(--ink)}
+.btn-ghost:hover{background:rgba(15,30,51,.06); transform:translateY(-2px)}
+.btn-row{display:flex; gap:12px; flex-wrap:wrap; margin-top:30px}
+
+/* ---------- HOME / hero ---------- */
+.hero{display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr); gap:48px; align-items:center; padding-top:26px}
+.hero-eyebrow{
+  font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.2em; color:var(--sub);
+  display:flex; align-items:center; gap:10px; margin-bottom:20px;
+}
+.hero-eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--brass);box-shadow:0 0 0 4px var(--brass-soft)}
+.hero h1{font-size:clamp(38px,5.6vw,64px); line-height:1.02; letter-spacing:-.02em; margin:0 0 14px; font-weight:700}
+.hero h1 .thin{font-weight:400; color:var(--ink-2)}
+.hero-headline{font-size:clamp(19px,2.6vw,27px); font-weight:600; letter-spacing:.01em; margin:0 0 22px}
+.hero-headline .brass{color:var(--brass-deep)}
+.hero-meta{font-family:'JetBrains Mono',monospace; font-size:12.5px; color:var(--sub); line-height:2; margin:0 0 6px}
+.hero-meta b{color:var(--ink); font-weight:600}
+.hero-bio{font-size:15.5px; line-height:1.75; color:var(--ink-2); max-width:52ch; margin:18px 0 0}
+
+/* boarding pass motif */
+.pass-zone{position:relative; display:flex; justify-content:center}
+.pass{
+  width:min(100%,360px); background:var(--card); border:1px solid var(--line);
+  border-radius:18px; box-shadow:var(--shadow); transform:rotate(-2.5deg);
+  padding:22px 22px 18px; position:relative; overflow:hidden;
+}
+.pass::before{content:""; position:absolute; left:0;top:0;bottom:0; width:5px;
+  background:repeating-linear-gradient(-45deg, var(--brass) 0 4px, transparent 4px 8px); opacity:.7}
+.pass-head{display:flex; justify-content:space-between; align-items:center; margin-bottom:14px}
+.pass-head .t1{font-size:10px; letter-spacing:.2em; color:var(--sub)}
+.pass-head .t2{font-size:11px; letter-spacing:.1em; color:var(--brass-deep); font-weight:600}
+.pass-name{font-size:17px; font-weight:700; letter-spacing:.03em; margin-bottom:2px}
+.pass-sub{font-size:10px; letter-spacing:.14em; color:var(--sub); margin-bottom:16px}
+.pass-route{
+  display:flex; align-items:center; gap:8px; justify-content:space-between;
+  border:1px dashed var(--line); border-radius:12px; padding:12px 14px; margin-bottom:14px;
+  background:rgba(176,138,60,.06);
+}
+.pass-route .codes{display:flex; align-items:center; gap:8px; font-size:12px; font-weight:600; letter-spacing:.06em; flex-wrap:wrap}
+.pass-route .codes .sep{color:var(--brass-deep)}
+.pass-route .plane{color:var(--brass-deep); font-size:14px}
+.pass-grid{display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin-bottom:14px}
+.pass-grid .cap{font-size:8.5px; letter-spacing:.14em; color:var(--sub)}
+.pass-grid .val{font-size:11.5px; font-weight:600; margin-top:2px}
+.pass-perf{border-top:2px dashed var(--line); margin:0 -22px 12px; position:relative}
+.pass-perf::before,.pass-perf::after{content:""; position:absolute; top:-9px; width:16px;height:16px;border-radius:50%;background:var(--paper);border:1px solid var(--line)}
+.pass-perf::before{left:-9px} .pass-perf::after{right:-9px}
+.pass-barcode{display:flex; gap:2px; height:30px; align-items:stretch; opacity:.85}
+.pass-barcode span{background:var(--ink); display:block}
+.pass-num{font-size:9px; letter-spacing:.28em; color:var(--sub); margin-top:6px}
+.pass-shadow{position:absolute; inset:0; pointer-events:none; box-shadow:inset 0 0 40px rgba(176,138,60,.06); border-radius:18px}
+
+/* welcome card (first visit only) */
+#welcome-wrap{position:absolute; inset:0; z-index:60; pointer-events:none; display:none}
+#welcome-wrap.show{display:block}
+#welcome-card{
+  position:absolute; right:6%; bottom:-8px; width:220px; pointer-events:auto; cursor:pointer;
+  background:var(--ink); color:var(--paper); border-radius:14px; padding:14px 16px;
+  box-shadow:0 18px 40px rgba(15,30,51,.30); transform:translateY(24px) rotate(2deg); opacity:0;
+  transition:opacity .45s ease, transform .45s cubic-bezier(.2,.8,.2,1);
+  border:1px solid rgba(176,138,60,.5);
+}
+#welcome-wrap.show #welcome-card{opacity:1; transform:translateY(0) rotate(2deg)}
+#welcome-wrap.leaving #welcome-card{opacity:0; transform:translateY(14px) rotate(2deg)}
+.wc-kicker{font-size:9px; letter-spacing:.2em; color:#D8BE7E; margin-bottom:8px}
+.wc-route{font-size:12px; letter-spacing:.08em; font-weight:600; margin-bottom:6px}
+.wc-hint{font-size:9px; letter-spacing:.12em; opacity:.65}
+
+/* home highlights strip */
+.hstrip{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:56px}
+.hcard{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:20px 20px 22px; box-shadow:0 8px 22px rgba(15,30,51,.05)}
+.hcard .idx{font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.18em; color:var(--brass-deep); margin-bottom:10px}
+.hcard h3{margin:0 0 8px; font-size:16px}
+.hcard p{margin:0; font-size:13.5px; line-height:1.65; color:var(--sub)}
+.hcard a.morelink{display:inline-block; margin-top:10px; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.08em; color:var(--brass-deep); text-decoration:none}
+.hcard a.morelink:hover{text-decoration:underline}
+
+/* ---------- JOURNEY ---------- */
+.page-title{font-size:clamp(30px,4.4vw,46px); letter-spacing:-.02em; margin:0 0 10px; font-weight:700}
+.page-sub{font-size:15px; line-height:1.7; color:var(--sub); max-width:60ch; margin:0 0 44px}
+.tl{position:relative; padding-left:56px; margin:10px 0 20px}
+.tl-line{position:absolute; left:16px; top:6px; bottom:6px; border-left:2px dashed rgba(15,30,51,.28)}
+.tl-plane{
+  position:absolute; left:17px; top:0; z-index:5; width:30px; height:30px; margin-left:-15px;
+  display:grid; place-items:center; background:var(--paper); border:1px solid var(--line);
+  border-radius:50%; color:var(--brass-deep); font-size:14px; transform:translateY(-50%) rotate(90deg);
+  box-shadow:0 4px 12px rgba(15,30,51,.12); pointer-events:none;
+}
+.tl-node{position:relative; margin-bottom:58px}
+.tl-node:last-child{margin-bottom:0}
+.tl-dot{
+  position:absolute; left:-48px; top:6px; width:13px; height:13px; border-radius:50%;
+  background:var(--paper); border:2px solid rgba(15,30,51,.32); transition:all .35s ease;
+}
+.tl-node.lit .tl-dot{border-color:var(--brass); background:var(--brass); box-shadow:0 0 0 6px var(--brass-soft)}
+.tl-year{font-size:10.5px; letter-spacing:.14em; color:var(--brass-deep); font-weight:600; margin-bottom:8px}
+.tl-node h3{margin:0 0 4px; font-size:21px; letter-spacing:-.01em}
+.tl-co{font-size:11px; letter-spacing:.12em; color:var(--sub); margin-bottom:12px}
+.tl-co .now{color:var(--brass-deep); border:1px solid var(--brass); border-radius:999px; padding:1px 9px; font-size:9.5px; margin-left:8px}
+.tl-node > p{font-size:14px; line-height:1.75; color:var(--ink-2); max-width:62ch; margin:0 0 16px}
+.tl-missions{list-style:none; margin:0; padding:0; display:grid; gap:12px}
+.tl-missions li{
+  background:var(--card); border:1px solid var(--line-soft); border-left:3px solid var(--brass);
+  border-radius:10px; padding:12px 15px; font-size:13.5px; line-height:1.6; color:var(--ink-2); max-width:64ch;
+}
+.tl-missions li b{display:block; font-size:13.5px; color:var(--ink); margin-bottom:2px}
+.tl-missions .mno{font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--brass-deep); letter-spacing:.1em; margin-right:8px}
+
+/* instrument panel */
+.panel{margin-top:70px; padding-top:40px; border-top:1px solid var(--line)}
+.stats{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden}
+.stat{background:var(--card); padding:22px 18px}
+.stat .num{font-size:30px; font-weight:600; color:var(--brass-deep); letter-spacing:-.02em}
+.stat .cap{font-size:11.5px; line-height:1.55; color:var(--sub); margin-top:6px}
+.skills{margin-top:44px}
+.chips{display:flex; flex-wrap:wrap; gap:9px; margin-top:16px}
+.chip{
+  font-family:'JetBrains Mono',monospace; font-size:11.5px; letter-spacing:.02em;
+  padding:8px 14px; border-radius:999px; background:rgba(15,30,51,.045);
+  border:1px solid var(--line-soft); color:var(--ink-2);
+}
+
+/* ---------- WORK ---------- */
+.work-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:8px}
+.work-card{
+  background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+  padding:26px 24px 28px; box-shadow:0 8px 22px rgba(15,30,51,.05);
+  display:flex; flex-direction:column; transition:transform .2s ease, box-shadow .2s ease;
+}
+.work-card:hover{transform:translateY(-4px); box-shadow:0 18px 38px rgba(15,30,51,.10)}
+.work-card .idx{font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.2em; color:var(--brass-deep); margin-bottom:14px}
+.work-card h3{margin:0 0 10px; font-size:20px; letter-spacing:-.01em}
+.work-card p{margin:0 0 12px; font-size:14px; line-height:1.75; color:var(--ink-2)}
+.work-card ul{margin:6px 0 0; padding:0; list-style:none; display:grid; gap:8px}
+.work-card ul li{font-size:13px; line-height:1.6; color:var(--sub); padding-left:18px; position:relative}
+.work-card ul li::before{content:"—"; position:absolute; left:0; color:var(--brass-deep)}
+
+/* ---------- PHOTOS / places ---------- */
+.places{display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:16px; margin-top:8px}
+.place{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; box-shadow:0 8px 22px rgba(15,30,51,.05)}
+.place-photos{margin:0; padding:12px 12px 0}
+.place-photos img{display:block; width:100%; height:100%; object-fit:cover; border-radius:10px; background:#16273f}
+.ph-main{aspect-ratio:16/10}
+.ph-row{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:12px}
+.ph-row img{aspect-ratio:4/3}
+.photo-credits{margin-top:20px; font-size:12px; color:var(--sub)}
+.photo-credits summary{cursor:pointer; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.14em; color:var(--brass-deep)}
+.photo-credits ul{list-style:none; margin:12px 0 0; padding:0; display:grid; gap:8px}
+.photo-credits li{line-height:1.65}
+.photo-credits a{color:var(--brass-deep)}
+.place-body{padding:16px 18px 20px}
+.place-body .code{font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.2em; color:var(--brass-deep); margin-bottom:6px}
+.place-body h3{margin:0 0 6px; font-size:18px}
+.place-body p{margin:0; font-size:13.5px; line-height:1.65; color:var(--sub)}
+.place.live{outline:2px solid var(--brass); outline-offset:-2px}
+.place-live{font-family:'JetBrains Mono',monospace; font-size:9.5px; letter-spacing:.16em; color:var(--brass-deep); margin-top:10px}
+
+/* ---------- LAB ---------- */
+.lab-grid{display:grid; grid-template-columns:minmax(0,1.5fr) minmax(0,1fr); gap:16px; margin-top:8px}
+.term{
+  background:#0F1E33; color:#EDE6D4; border-radius:var(--radius); overflow:hidden;
+  border:1px solid rgba(15,30,51,.5); box-shadow:0 18px 44px rgba(15,30,51,.22);
+  display:flex; flex-direction:column; min-height:380px;
+}
+.term-bar{display:flex; align-items:center; gap:8px; padding:12px 16px; border-bottom:1px solid rgba(246,241,231,.12)}
+.t-dot{width:11px;height:11px;border-radius:50%;background:#3A4B66}
+.t-dot:nth-child(1){background:#C96A5A}.t-dot:nth-child(2){background:#C9A45A}.t-dot:nth-child(3){background:#6AA87E}
+.term-title{margin-left:6px; font-size:10.5px; letter-spacing:.1em; color:#9AA6BA}
+.term-body{padding:18px 18px 6px; font-size:13px; line-height:1.75; flex:1; overflow-y:auto; max-height:420px}
+.term-body .tline{white-space:pre-wrap; word-break:break-word}
+.term-body .dim{color:#9AA6BA}
+.term-body .ok{color:#D8BE7E}
+.term-body a{color:#D8BE7E}
+.term-input-row{display:flex; align-items:center; gap:10px; padding:12px 18px 18px; font-size:13px}
+.term-input-row .prompt{color:#D8BE7E; white-space:nowrap}
+#term-input{
+  flex:1; background:transparent; border:0; outline:0; color:#EDE6D4;
+  font-family:'JetBrains Mono',monospace; font-size:13px; caret-color:#D8BE7E; min-width:0;
+}
+.syspanel{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:22px}
+.syspanel h3{margin:0 0 4px; font-size:16px}
+.syspanel .decorative{font-family:'JetBrains Mono',monospace; font-size:9.5px; letter-spacing:.16em; color:var(--brass-deep); margin-bottom:14px}
+.sysrow{display:flex; justify-content:space-between; gap:12px; padding:10px 0; border-top:1px solid var(--line-soft); font-size:12.5px}
+.sysrow:first-of-type{border-top:0}
+.sysrow .k{font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.08em; color:var(--sub)}
+.sysrow .v{font-family:'JetBrains Mono',monospace; font-size:11px; text-align:right; color:var(--ink)}
+.mapwrap{margin-top:16px; background:var(--card); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; box-shadow:0 8px 22px rgba(15,30,51,.05)}
+.map-head{display:flex; justify-content:space-between; align-items:center; padding:14px 18px; border-bottom:1px solid var(--line-soft)}
+.map-head .t{font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.16em; color:var(--brass-deep); font-weight:600}
+.map-head .n{font-size:13px; color:var(--sub)}
+.map-tabs{display:flex; gap:8px; padding:12px 18px; border-bottom:1px solid var(--line-soft); overflow-x:auto; scrollbar-width:thin}
+.map-tab{flex:0 0 auto; font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.12em; text-transform:uppercase; padding:8px 14px; border:1px solid var(--line); border-radius:999px; background:transparent; color:var(--sub); cursor:pointer; transition:border-color .2s, color .2s, background .2s}
+.map-tab:hover{border-color:var(--brass); color:var(--ink)}
+.map-tab.is-active{background:var(--ink); border-color:var(--ink); color:var(--paper)}
+#map{height:340px; width:100%; background:var(--paper-deep); z-index:1}
+.map-note{padding:12px 18px; font-size:11.5px; color:var(--sub); border-top:1px solid var(--line-soft); font-family:'JetBrains Mono',monospace; letter-spacing:.02em}
+.leaflet-container{font-family:'JetBrains Mono',monospace}
+
+/* ---------- CV ---------- */
+.cv-sheet{
+  max-width:780px; margin:0 auto; background:var(--card); border:1px solid var(--line);
+  border-radius:var(--radius); box-shadow:var(--shadow); padding:clamp(28px,5vw,58px);
+}
+.cv-top{display:flex; justify-content:flex-end; margin-bottom:18px}
+.cv-sheet h1{font-size:clamp(30px,4.6vw,44px); letter-spacing:-.02em; margin:0 0 6px}
+.cv-contact{font-size:12px; letter-spacing:.04em; color:var(--sub); margin-bottom:26px}
+.cv-contact a{color:var(--brass-deep); text-decoration:none}
+.cv-contact a:hover{text-decoration:underline}
+.cv-sheet h2{
+  font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.22em; font-weight:600;
+  color:var(--brass-deep); margin:34px 0 14px; padding-bottom:8px; border-bottom:1px solid var(--line);
+}
+.cv-sheet h2:first-of-type{margin-top:0}
+.cv-summary{font-size:14.5px; line-height:1.8; color:var(--ink-2); margin:0}
+.cv-role{margin-bottom:26px}
+.cv-role:last-child{margin-bottom:0}
+.cv-role-head{display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; align-items:baseline; margin-bottom:8px}
+.cv-role-head b{font-size:16.5px}
+.cv-role-head .mono{font-size:10.5px; letter-spacing:.08em; color:var(--sub)}
+.cv-role ul{margin:0; padding-left:20px; display:grid; gap:7px}
+.cv-role ul li{font-size:13.5px; line-height:1.7; color:var(--ink-2)}
+.cv-role ul li::marker{color:var(--brass-deep)}
+.cv-skills{display:grid; gap:10px}
+.cv-skillrow{display:grid; grid-template-columns:170px 1fr; gap:12px; font-size:13px; line-height:1.65}
+.cv-skillrow .k{font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.08em; color:var(--sub); padding-top:2px}
+.cv-ref{margin:30px 0 0; font-size:12.5px; color:var(--sub); font-style:italic}
+
+/* ---------- footer ---------- */
+#site-footer{
+  border-top:1px solid var(--line); margin-top:40px; padding:34px 22px 110px; text-align:center;
+}
+#site-footer .f1{font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.04em; margin-bottom:10px}
+#site-footer .f1 a{color:var(--brass-deep); text-decoration:none; font-weight:600}
+#site-footer .f1 a:hover{text-decoration:underline}
+#site-footer .f2{font-size:12.5px; color:var(--sub); margin-bottom:6px}
+#site-footer .f3{font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.1em; color:var(--sub); opacity:.75}
+
+/* reveal */
+.fade-up{opacity:0; transform:translateY(22px); transition:opacity .65s cubic-bezier(.2,.8,.2,1), transform .65s cubic-bezier(.2,.8,.2,1)}
+.fade-up.on{opacity:1; transform:none}
+
+/* ---------- responsive ---------- */
+@media (max-width:900px){
+  .hero{grid-template-columns:1fr; gap:40px}
+  .pass-zone{order:-1}
+  .pass{transform:rotate(-1.5deg); width:min(100%,340px)}
+  .lab-grid{grid-template-columns:1fr}
+  .work-grid{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  .stats{grid-template-columns:1fr 1fr}
+  .hstrip{grid-template-columns:1fr}
+  .cv-skillrow{grid-template-columns:1fr; gap:2px}
+  .tl{padding-left:44px}
+  .tl-line{left:12px} .tl-plane{left:13px}
+  .tl-dot{left:-40px}
+  .pass-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:480px){
+  #nav .brand .bname{display:none}
+  .nav-links a{font-size:10px; padding:8px 8px}
+  .route{padding:104px 16px 24px}
+  #welcome-card{right:4%; width:200px}
+}
+
+/* ---------- print (CV) ---------- */
+@media print{
+  #nav, .cv-top, #welcome-wrap, #site-footer .f2{display:none !important}
+  .route{display:none !important}
+  #r-cv{display:block !important; padding:0; min-height:0}
+  body{background:#fff}
+  .cv-sheet{box-shadow:none; border:0; border-radius:0; max-width:none; padding:0}
+  .fade-up{opacity:1 !important; transform:none !important}
+  #site-footer{border-top:1px solid #ccc; padding:18px 0 0; margin-top:24px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms !important; transition-duration:.01ms !important}
+  html{scroll-behavior:auto}
+  .fade-up{opacity:1; transform:none}
+}
+</style>
+<script>
+/* set theme before first paint to avoid a flash */
+try{
+  var __t = localStorage.getItem("badrul-theme");
+  if(__t !== "dark" && __t !== "light"){
+    __t = (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) ? "dark" : "light";
+  }
+  document.documentElement.setAttribute("data-theme", __t);
+}catch(e){}
+</script>
+</head>
+<body>
+<nav id="nav" aria-label="Primary">
+  <a class="brand" href="#/" data-route-link="/" aria-label="Home"><span class="mark">SB</span><span class="bname">MUNEER</span></a>
+  <div class="nav-links">
+    <a href="#/" data-route-link="/" data-route-path="/">Home</a>
+    <a href="#/journey" data-route-link="/journey" data-route-path="/journey">Journey</a>
+    <a href="#/work" data-route-link="/work" data-route-path="/work">Work</a>
+    <a href="#/photos" data-route-link="/photos" data-route-path="/photos">Photos</a>
+    <a href="#/lab" data-route-link="/lab" data-route-path="/lab">Lab</a>
+    <a href="#/cv" data-route-link="/cv" data-route-path="/cv">CV</a>
+  </div>
+  <button id="theme-toggle" class="theme-toggle" aria-label="Switch to dark mode" aria-pressed="false" title="Toggle day / night">
+    <span class="tt-track" aria-hidden="true"><span class="tt-knob">☀</span></span>
+  </button>
+</nav>
+
+<main>
+<!-- ==================== HOME ==================== -->
+<section class="route" id="r-home" aria-label="Home">
+  <div class="wrap">
+    <div class="hero">
+      <div class="hero-copy">
+        <div class="hero-eyebrow"><span class="dot"></span>PERSONAL SITE · GLENDALE, ARIZONA</div>
+        <h1>Syed Badrul <span class="thin">Muneer</span></h1>
+        <p class="hero-headline">ENGINEER. <span class="brass">BUILDER.</span> PRODUCT THINKER.</p>
+        <p class="hero-meta"><b>Intel</b> — Product Manager, AI &amp; Semiconductors<br>12 years · 2014—present<br>Glendale, Arizona</p>
+        <p class="hero-bio">I'm a semiconductor and firmware engineer turned product manager. Since 2014 I've worked across chip bring-up, real-time firmware, connectivity and security — and today I build AI-enabled embedded products at the hardware/software boundary.</p>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="mailto:contact@badrulmuneer.com">Get in touch ↗</a>
+          <a class="btn btn-ghost" href="#/cv">View CV</a>
+          <a class="btn btn-ghost" href="https://github.com/janejasminjan" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+      </div>
+      <div class="pass-zone" id="pass-zone">
+        <aside class="pass mono" aria-label="Decorative boarding pass motif">
+          <div class="pass-head"><span class="t1">BOARDING PASS</span><span class="t2">BM 2014</span></div>
+          <div class="pass-name" style="font-family:'Space Grotesk',sans-serif">SYED BADRUL MUNEER</div>
+          <div class="pass-sub">ENGINEER · BUILDER · PRODUCT THINKER</div>
+          <div class="pass-route">
+            <div class="codes"><span>SXR</span><span class="sep">›</span><span>LON</span><span class="sep">›</span><span>PDX</span><span class="sep">›</span><span>RAL</span></div>
+            <span class="plane" aria-hidden="true">✈</span>
+          </div>
+          <div class="pass-grid">
+            <div><div class="cap">STATUS</div><div class="val">AIRBORNE</div></div>
+            <div><div class="cap">SINCE</div><div class="val">2014</div></div>
+            <div><div class="cap">STACK</div><div class="val">HW · FW · AI</div></div>
+          </div>
+          <div class="pass-perf"></div>
+          <div class="pass-barcode" aria-hidden="true">
+            <span style="width:3px"></span><span style="width:1px"></span><span style="width:4px"></span><span style="width:2px"></span><span style="width:1px"></span><span style="width:5px"></span><span style="width:2px"></span><span style="width:3px"></span><span style="width:1px"></span><span style="width:4px"></span><span style="width:2px"></span><span style="width:6px"></span><span style="width:1px"></span><span style="width:3px"></span><span style="width:2px"></span><span style="width:4px"></span><span style="width:1px"></span><span style="width:5px"></span><span style="width:3px"></span><span style="width:2px"></span><span style="width:1px"></span><span style="width:4px"></span><span style="width:2px"></span><span style="width:3px"></span><span style="width:6px"></span><span style="width:1px"></span><span style="width:2px"></span><span style="width:4px"></span><span style="width:1px"></span><span style="width:3px"></span>
+          </div>
+          <div class="pass-num">SBM · 2014 · INTEL CORP</div>
+          <div class="pass-shadow"></div>
+        </aside>
+        <div id="welcome-wrap" aria-hidden="true">
+          <div id="welcome-card" role="presentation">
+            <div class="wc-kicker mono">✈ WELCOME ABOARD</div>
+            <div class="wc-route mono">SXR › LON › PDX › RAL</div>
+            <div class="wc-hint mono">tap to dismiss</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hstrip">
+      <div class="hcard fade-up">
+        <div class="idx">01 / JOURNEY</div>
+        <h3>Twelve years at Intel</h3>
+        <p>From silicon bring-up and real-time firmware to senior embedded engineering — now product management for AI and semiconductors.</p>
+        <a class="morelink" href="#/journey">Follow the flight plan →</a>
+      </div>
+      <div class="hcard fade-up">
+        <div class="idx">02 / WORK</div>
+        <h3>Three systems, one craft</h3>
+        <p>AI product systems, firmware platforms, and the business systems that turn deep technical work into shipped products.</p>
+        <a class="morelink" href="#/work">See the work →</a>
+      </div>
+      <div class="hcard fade-up">
+        <div class="idx">03 / LAB</div>
+        <h3>Hands-on corner</h3>
+        <p>A working terminal and a city-level map of Glendale, Arizona. Type <span class="mono">help</span> in the terminal to look around.</p>
+        <a class="morelink" href="#/lab">Enter the lab →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== JOURNEY ==================== -->
+<section class="route" id="r-journey" aria-label="Journey">
+  <div class="wrap">
+    <div class="kicker"><span class="k-plane">✈</span> FLIGHT PLAN</div>
+    <h2 class="page-title">The journey so far</h2>
+    <p class="page-sub">Twelve years at Intel Corp — from low-level firmware on new silicon to product strategy for AI-enabled semiconductor products.</p>
+
+    <div class="tl" id="tl">
+      <div class="tl-line" aria-hidden="true"></div>
+      <div class="tl-plane" id="tl-plane" aria-hidden="true">✈</div>
+
+      <article class="tl-node fade-up">
+        <span class="tl-dot"></span>
+        <div class="tl-year mono">2021 — PRESENT</div>
+        <h3>Product Manager — AI &amp; Semiconductors</h3>
+        <div class="tl-co mono">INTEL CORP<span class="now">CURRENT</span></div>
+        <p>Drive product strategy and roadmap for AI-enabled semiconductor solutions, bridging firmware, hardware, and AI/ML capabilities into cohesive products. Partner with engineering, design, and business stakeholders to define features, prioritize work, and deliver measurable impact.</p>
+        <ul class="tl-missions">
+          <li><b><span class="mno">01</span>AI-Enabled Embedded Products</b>Defined and launched products integrating on-device inference and edge AI with existing semiconductor platforms.</li>
+          <li><b><span class="mno">02</span>AI + Firmware Integration</b>Led initiatives to embed AI models into firmware pipelines, enabling smarter sensing, prediction, and automation on resource-constrained devices.</li>
+        </ul>
+      </article>
+
+      <article class="tl-node fade-up">
+        <span class="tl-dot"></span>
+        <div class="tl-year mono">2017 — 2021</div>
+        <h3>Senior Embedded Engineer</h3>
+        <div class="tl-co mono">INTEL CORP</div>
+        <p>Owned end-to-end embedded solutions spanning firmware, connectivity, and cross-platform integration between devices, gateways, and cloud services. Worked closely with product and hardware teams to define architectures for connected semiconductor products.</p>
+        <ul class="tl-missions">
+          <li><b><span class="mno">03</span>Cross-Platform Connectivity Stack</b>Designed and implemented communication layers (BLE, Wi-Fi, Ethernet) enabling seamless connectivity between embedded devices and multi-OS clients.</li>
+          <li><b><span class="mno">04</span>Embedded Security &amp; OTA</b>Built secure boot, firmware signing, and over-the-air update mechanisms for deployed semiconductor-based products.</li>
+        </ul>
+      </article>
+
+      <article class="tl-node fade-up">
+        <span class="tl-dot"></span>
+        <div class="tl-year mono">2014 — 2017</div>
+        <h3>Firmware Engineer</h3>
+        <div class="tl-co mono">INTEL CORP</div>
+        <p>Worked on low-level firmware for semiconductor-based systems, focusing on device drivers, bootloaders, and real-time control logic. Collaborated with hardware teams to bring up new chips and validate silicon in lab and production environments.</p>
+        <ul class="tl-missions">
+          <li><b><span class="mno">05</span>Chip Bring-Up &amp; Validation</b>Led firmware development for initial silicon bring-up, register mapping, and hardware validation on new semiconductor platforms.</li>
+          <li><b><span class="mno">06</span>Real-Time Firmware Modules</b>Implemented interrupt-driven firmware components for timing-critical control and data acquisition on embedded devices.</li>
+        </ul>
+      </article>
+    </div>
+
+    <div class="panel">
+      <div class="kicker"><span class="k-plane">✈</span> INSTRUMENT PANEL</div>
+      <div class="stats">
+        <div class="stat"><div class="num mono">12</div><div class="cap">Years airborne<br>since 2014</div></div>
+        <div class="stat"><div class="num mono">4</div><div class="cap">Cities based<br>SXR · LON · PDX · RAL</div></div>
+        <div class="stat"><div class="num mono">3</div><div class="cap">Roles held<br>at Intel Corp</div></div>
+        <div class="stat"><div class="num mono">6</div><div class="cap">Key missions<br>shipped to production</div></div>
+      </div>
+      <div class="skills">
+        <div class="kicker"><span class="k-plane">✈</span> SYSTEMS ONBOARD</div>
+        <div class="chips">
+          <span class="chip">Embedded C / C++</span>
+          <span class="chip">Real-Time Firmware</span>
+          <span class="chip">RTOS</span>
+          <span class="chip">BLE &amp; Wi-Fi Stacks</span>
+          <span class="chip">Secure Boot &amp; OTA</span>
+          <span class="chip">Edge AI / On-Device Inference</span>
+          <span class="chip">Silicon Bring-Up</span>
+          <span class="chip">Product Strategy</span>
+          <span class="chip">AI-Assisted Prototyping</span>
+          <span class="chip">Data-Driven Roadmapping</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== WORK ==================== -->
+<section class="route" id="r-work" aria-label="Work">
+  <div class="wrap">
+    <div class="kicker"><span class="k-plane">✈</span> CAPABILITY CARDS</div>
+    <h2 class="page-title">What I build</h2>
+    <p class="page-sub">Three areas of practice, one craft: turning deep technical work in semiconductors, firmware and AI into products that ship.</p>
+    <div class="work-grid">
+      <article class="work-card fade-up">
+        <div class="idx">01</div>
+        <h3>AI Product System</h3>
+        <p>Defining what gets built at the intersection of silicon and machine intelligence — product strategy, roadmaps, and launches for AI-enabled embedded products.</p>
+        <ul>
+          <li>Product strategy and roadmapping for AI-enabled semiconductor solutions</li>
+          <li>Bridging firmware, hardware, and AI/ML capabilities into cohesive products</li>
+          <li>On-device inference and edge AI integrated with existing platforms</li>
+          <li>Partnering across engineering, design, and business stakeholders</li>
+        </ul>
+      </article>
+      <article class="work-card fade-up">
+        <div class="idx">02</div>
+        <h3>Firmware Platform</h3>
+        <p>The low-level foundation: real-time firmware, connectivity, and security on resource-constrained semiconductor platforms — from first silicon to deployed devices.</p>
+        <ul>
+          <li>Device drivers, bootloaders, and interrupt-driven real-time control</li>
+          <li>Silicon bring-up, register mapping, and hardware validation</li>
+          <li>BLE, Wi-Fi, and Ethernet communication layers for multi-OS clients</li>
+          <li>Secure boot, firmware signing, and over-the-air update mechanisms</li>
+        </ul>
+      </article>
+      <article class="work-card fade-up">
+        <div class="idx">03</div>
+        <h3>Business System</h3>
+        <p>The connective tissue: translating technical possibility into prioritized, resourced, shipped outcomes — with the data and judgment to back each call.</p>
+        <ul>
+          <li>Feature definition and prioritization with engineering and hardware teams</li>
+          <li>Data-driven roadmapping and AI-assisted prototyping to test ideas fast</li>
+          <li>Architectures for connected products, from device to gateway to cloud</li>
+          <li>Shipping discipline: useful, understandable, production-ready systems</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== PHOTOS / PLACES ==================== -->
+<section class="route" id="r-photos" aria-label="Places">
+  <div class="wrap">
+    <div class="kicker"><span class="k-plane">✈</span> LAYOVERS &amp; HOME BASES</div>
+    <h2 class="page-title">Places</h2>
+    <p class="page-sub">Five cities, one journey — frames from the places I've lived and worked along the way, each with its own light.</p>
+    <div class="places">
+      <article class="place fade-up">
+        <figure class="place-photos">
+          <img class="ph-main" src="places/srinagar-1.jpg" alt="Houseboats moored on Dal Lake, Srinagar" loading="lazy" title="Photo: Slyronit · CC BY-SA 4.0 · via Wikimedia Commons">
+          <div class="ph-row">
+            <img src="places/srinagar-2.jpg" alt="A houseboat and rower on the still water of Dal Lake" loading="lazy" title="Photo: Abid Sidiq Ahanger · CC BY 4.0 · via Wikimedia Commons">
+            <img src="places/srinagar-3.jpg" alt="Panoramic view over Srinagar and the valley beyond" loading="lazy" title="Photo: KennyOMG · CC BY-SA 3.0 · via Wikimedia Commons">
+          </div>
+        </figure>
+        <div class="place-body">
+          <div class="code mono">SXR · SRINAGAR</div>
+          <h3>Srinagar</h3>
+          <p>Where the journey started — home.</p>
+        </div>
+      </article>
+      <article class="place fade-up">
+        <figure class="place-photos">
+          <img class="ph-main" src="places/london-1.jpg" alt="Big Ben and the Houses of Parliament across the River Thames" loading="lazy" title="Photo: Chris Rycroft · CC BY 2.0 · via Wikimedia Commons">
+          <div class="ph-row">
+            <img src="places/london-2.jpg" alt="The Palace of Westminster and Big Ben from the south bank" loading="lazy" title="Photo: Terry Ott · CC BY 2.0 · via Wikimedia Commons">
+            <img src="places/london-3.jpg" alt="Westminster Bridge with Big Ben and Parliament beyond" loading="lazy" title="Photo: Mikey · CC BY 2.0 · via Wikimedia Commons">
+          </div>
+        </figure>
+        <div class="place-body">
+          <div class="code mono">LON · LONDON</div>
+          <h3>London</h3>
+          <p>Lived and worked here — a formative chapter across the Atlantic.</p>
+        </div>
+      </article>
+      <article class="place fade-up">
+        <figure class="place-photos">
+          <img class="ph-main" src="places/portland-1.jpg" alt="Downtown Portland skyline seen from the north" loading="lazy" title="Photo: Steve Morgan · CC BY-SA 4.0 · via Wikimedia Commons">
+          <div class="ph-row">
+            <img src="places/portland-2.jpg" alt="Portland skyline and bridge over the Willamette River" loading="lazy" title="Photo: M.O. Stevens · CC BY-SA 3.0 · via Wikimedia Commons">
+            <img src="places/portland-3.jpg" alt="Portland skyline glittering at night" loading="lazy" title="Photo: Fcb981 · CC BY-SA 3.0 · via Wikimedia Commons">
+          </div>
+        </figure>
+        <div class="place-body">
+          <div class="code mono">PDX · PORTLAND</div>
+          <h3>Portland</h3>
+          <p>Lived and worked here — deep in the Pacific Northwest.</p>
+        </div>
+      </article>
+      <article class="place fade-up">
+        <figure class="place-photos">
+          <img class="ph-main" src="places/raleigh-1.jpg" alt="Raleigh skyline rising over a field of flowers" loading="lazy" title="Photo: Reba Spike · CC BY 2.0 · via Wikimedia Commons">
+          <div class="ph-row">
+            <img src="places/raleigh-2.jpg" alt="Downtown Raleigh lit up at night" loading="lazy" title="Photo: Jmalljmall · public domain · via Wikimedia Commons">
+            <img src="places/raleigh-3.jpg" alt="Raleigh skyline on a clear day" loading="lazy" title="Photo: James Willamor · CC BY-SA 3.0 · via Wikimedia Commons">
+          </div>
+        </figure>
+        <div class="place-body">
+          <div class="code mono">RAL · RALEIGH</div>
+          <h3>Raleigh</h3>
+          <p>Lived and worked here — southern pines and long summers.</p>
+        </div>
+      </article>
+      <article class="place live fade-up">
+        <figure class="place-photos">
+          <img class="ph-main" src="places/glendale-1.jpg" alt="Desert sunset with a saguaro silhouette" loading="lazy" title="Photo: Bianca's Lens · CC BY 2.0 · via Wikimedia Commons">
+          <div class="ph-row">
+            <img src="places/glendale-2.jpg" alt="Saguaro cactus silhouetted against a desert sunset" loading="lazy" title="Photo: Mwinog2777 · CC BY-SA 4.0 · via Wikimedia Commons">
+            <img src="places/glendale-3.jpg" alt="Sunlight flaring through tall saguaro cacti" loading="lazy" title="Photo: Jelieta Walinski · CC BY-SA 4.0 · via Wikimedia Commons">
+          </div>
+        </figure>
+        <div class="place-body">
+          <div class="code mono">GLENDALE · ARIZONA</div>
+          <h3>Glendale</h3>
+          <p>Home base now — desert sunsets and clear skies.</p>
+          <div class="place-live mono">● CURRENT BASE</div>
+        </div>
+      </article>
+    </div>
+    <details class="photo-credits">
+      <summary>PHOTO CREDITS</summary>
+      <ul>
+        <li><b>Srinagar</b> — <a href="https://commons.wikimedia.org/wiki/File:House_boats_on_Dal_Lake,_Srinagar_5.jpg">Dal Lake houseboats</a> · Slyronit (CC BY-SA 4.0); <a href="https://commons.wikimedia.org/wiki/File:Dal_lake_by_Ahanger_HOBO.jpg">houseboat on Dal Lake</a> · Abid Sidiq Ahanger (CC BY 4.0); <a href="https://commons.wikimedia.org/wiki/File:Srinagar_pano.jpg">city panorama</a> · KennyOMG (CC BY-SA 3.0)</li>
+        <li><b>London</b> — <a href="https://commons.wikimedia.org/wiki/File:Palace_of_Westminster_(Houses_of_Parliament)_and_Big_Ben_(Elizabeth_Tower)_(52002183721).jpg">Big Ben across the Thames</a> · Chris Rycroft (CC BY 2.0); <a href="https://commons.wikimedia.org/wiki/File:Houses_of_Parliament_in_2022_alt_crop.jpg">Palace of Westminster</a> · Terry Ott (CC BY 2.0); <a href="https://commons.wikimedia.org/wiki/File:Houses_of_Parliament,_Big_Ben_Clock_Tower,_River_Thames_%26_Westminster_Bridge_(8649140544).jpg">Westminster Bridge</a> · Mikey (CC BY 2.0)</li>
+        <li><b>Portland</b> — <a href="https://commons.wikimedia.org/wiki/File:Downtown_Portland_from_the_north_2013.jpg">skyline from the north</a> · Steve Morgan (CC BY-SA 4.0); <a href="https://commons.wikimedia.org/wiki/File:Portland_skyline_from_OMSI_-_Portland,_Oregon.JPG">skyline from OMSI</a> · M.O. Stevens (CC BY-SA 3.0); <a href="https://commons.wikimedia.org/wiki/File:Portland_Night_panorama_edit.jpg">night panorama</a> · Fcb981 (CC BY-SA 3.0)</li>
+        <li><b>Raleigh</b> — <a href="https://commons.wikimedia.org/wiki/File:Downtown_Raleigh_(52749869177).jpg">skyline over flower fields</a> · Reba Spike (CC BY 2.0); <a href="https://commons.wikimedia.org/wiki/File:Downtown_Raleigh_Skyline_viewed_from_Boylan_Ave.jpg">downtown at night</a> · Jmalljmall (public domain); <a href="https://commons.wikimedia.org/wiki/File:Raleigh_downtown_skyline_-_panoramio.jpg">daytime skyline</a> · James Willamor (CC BY-SA 3.0)</li>
+        <li><b>Glendale</b> — <a href="https://commons.wikimedia.org/wiki/File:Desert_Sunset_in_Saguaro1.jpg">desert sunset</a> · Bianca's Lens (CC BY 2.0); <a href="https://commons.wikimedia.org/wiki/File:Desert_Sunset,_Phoenix,_AZ.jpg">saguaro at sunset</a> · Mwinog2777 (CC BY-SA 4.0); <a href="https://commons.wikimedia.org/wiki/File:Light_In_The_Desert_Of_Arizona.jpg">sunlight through saguaros</a> · Jelieta Walinski (CC BY-SA 4.0)</li>
+      </ul>
+    </details>
+  </div>
+</section>
+
+<!-- ==================== LAB ==================== -->
+<section class="route" id="r-lab" aria-label="Lab">
+  <div class="wrap">
+    <div class="kicker"><span class="k-plane">✈</span> FLIGHT TEST</div>
+    <h2 class="page-title">The lab</h2>
+    <p class="page-sub">A hands-on corner of the site. The terminal below is live — type <span class="mono">help</span> and press enter. The map covers the five cities I travel between — pick a tab above it. City level only.</p>
+    <div class="lab-grid">
+      <div class="term fade-up" id="term" role="region" aria-label="Interactive terminal">
+        <div class="term-bar"><span class="t-dot"></span><span class="t-dot"></span><span class="t-dot"></span><span class="term-title mono">badrul — terminal</span></div>
+        <div class="term-body mono" id="term-body" aria-live="polite"></div>
+        <div class="term-input-row mono">
+          <span class="prompt">badrul@site:~$</span>
+          <input id="term-input" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Terminal input" placeholder="type 'help'…">
+        </div>
+      </div>
+      <aside class="syspanel fade-up" aria-label="Systems panel">
+        <h3>Systems panel</h3>
+        <div class="decorative">DECORATIVE · STATIC VALUES</div>
+        <div class="sysrow"><span class="k">THEME</span><span class="v">Polished Aviator · day/night</span></div>
+        <div class="sysrow"><span class="k">ROUTER</span><span class="v">hash-based · 6 routes</span></div>
+        <div class="sysrow"><span class="k">TERMINAL</span><span class="v">live · try "help"</span></div>
+        <div class="sysrow"><span class="k">MAP</span><span class="v">city-level · 5 cities</span></div>
+        <div class="sysrow"><span class="k">STACK</span><span class="v">HW · FW · AI</span></div>
+        <div class="sysrow"><span class="k">STATUS</span><span class="v">airborne since 2014</span></div>
+      </aside>
+    </div>
+    <div class="mapwrap fade-up">
+      <div class="map-head">
+        <span class="t mono">✈ ROUTE MAP</span>
+        <span class="n" id="map-city">Glendale, Arizona</span>
+      </div>
+      <div class="map-tabs" role="tablist" aria-label="Cities">
+        <button type="button" class="map-tab" role="tab" data-city="0" aria-selected="false">Srinagar</button>
+        <button type="button" class="map-tab" role="tab" data-city="1" aria-selected="false">London</button>
+        <button type="button" class="map-tab" role="tab" data-city="2" aria-selected="false">Portland</button>
+        <button type="button" class="map-tab" role="tab" data-city="3" aria-selected="false">Raleigh</button>
+        <button type="button" class="map-tab is-active" role="tab" data-city="4" aria-selected="true">Glendale ●</button>
+      </div>
+      <div id="map" role="img" aria-label="Map centered on Glendale, Arizona"></div>
+      <div class="map-note">City-level view only — no precise location shared.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== CV ==================== -->
+<section class="route" id="r-cv" aria-label="CV">
+  <div class="wrap">
+    <div class="cv-sheet">
+      <div class="cv-top">
+        <button class="btn btn-primary print-btn" type="button" onclick="window.print()">Download / Print</button>
+      </div>
+      <h1>Syed Badrul Muneer</h1>
+      <div class="cv-contact mono"><a href="mailto:contact@badrulmuneer.com">contact@badrulmuneer.com</a> &nbsp;·&nbsp; Glendale, Arizona</div>
+
+      <h2>PROFESSIONAL SUMMARY</h2>
+      <p class="cv-summary">Product Manager for AI &amp; Semiconductors at Intel with 12 years of experience across the stack — from silicon bring-up and real-time firmware to connectivity, security, and AI-enabled embedded products. I turn complex hardware, firmware and software systems into products that are useful, understandable and ready to ship.</p>
+
+      <h2>EXPERIENCE</h2>
+      <div class="cv-role">
+        <div class="cv-role-head"><b>Product Manager — AI &amp; Semiconductors</b><span class="mono">Intel Corp · 2021 — Present</span></div>
+        <ul>
+          <li>Drive product strategy and roadmap for AI-enabled semiconductor solutions, bridging firmware, hardware, and AI/ML capabilities into cohesive products.</li>
+          <li>Defined and launched products integrating on-device inference and edge AI with existing semiconductor platforms.</li>
+          <li>Led initiatives embedding AI models into firmware pipelines for smarter sensing, prediction, and automation on resource-constrained devices.</li>
+          <li>Partner with engineering, design, and business stakeholders to define features, prioritize work, and deliver measurable impact.</li>
+        </ul>
+      </div>
+      <div class="cv-role">
+        <div class="cv-role-head"><b>Senior Embedded Engineer</b><span class="mono">Intel Corp · 2017 — 2021</span></div>
+        <ul>
+          <li>Owned end-to-end embedded solutions spanning firmware, connectivity, and cross-platform integration between devices, gateways, and cloud services.</li>
+          <li>Designed and implemented communication layers (BLE, Wi-Fi, Ethernet) enabling connectivity between embedded devices and multi-OS clients.</li>
+          <li>Built secure boot, firmware signing, and over-the-air update mechanisms for deployed semiconductor-based products.</li>
+        </ul>
+      </div>
+      <div class="cv-role">
+        <div class="cv-role-head"><b>Firmware Engineer</b><span class="mono">Intel Corp · 2014 — 2017</span></div>
+        <ul>
+          <li>Developed low-level firmware — device drivers, bootloaders, real-time control logic — for semiconductor-based systems.</li>
+          <li>Led firmware development for initial silicon bring-up, register mapping, and hardware validation on new semiconductor platforms.</li>
+          <li>Implemented interrupt-driven firmware components for timing-critical control and data acquisition on embedded devices.</li>
+        </ul>
+      </div>
+
+      <h2>SKILLS</h2>
+      <div class="cv-skills">
+        <div class="cv-skillrow"><span class="k">EMBEDDED &amp; FIRMWARE</span><span>Embedded C / C++, Real-Time Firmware, RTOS, Silicon Bring-Up</span></div>
+        <div class="cv-skillrow"><span class="k">CONNECTIVITY &amp; SECURITY</span><span>BLE &amp; Wi-Fi Stacks, Secure Boot &amp; OTA</span></div>
+        <div class="cv-skillrow"><span class="k">AI</span><span>Edge AI / On-Device Inference, AI + Firmware Integration, AI-Assisted Prototyping</span></div>
+        <div class="cv-skillrow"><span class="k">PRODUCT</span><span>Product Strategy, Data-Driven Roadmapping</span></div>
+      </div>
+
+      <p class="cv-ref">References available on request.</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer id="site-footer">
+  <div class="f1">Get in touch — <a href="mailto:contact@badrulmuneer.com">contact@badrulmuneer.com</a> &nbsp;·&nbsp; <a href="https://github.com/janejasminjan" target="_blank" rel="noopener">GitHub ↗</a></div>
+  <div class="f2">Built at the hardware/software boundary</div>
+  <div class="f3 mono">© 2026 SYED BADRUL MUNEER</div>
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<script>
+(function(){
+"use strict";
+var ROUTES = {"/":"r-home","/journey":"r-journey","/work":"r-work","/photos":"r-photos","/lab":"r-lab","/cv":"r-cv"};
+var TITLES = {
+  "/":"Syed Badrul Muneer — Engineer, Builder, Product Thinker",
+  "/journey":"Journey — Syed Badrul Muneer",
+  "/work":"Work — Syed Badrul Muneer",
+  "/photos":"Places — Syed Badrul Muneer",
+  "/lab":"Lab — Syed Badrul Muneer",
+  "/cv":"CV — Syed Badrul Muneer"
+};
+
+function store(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
+function read(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+
+function currentRoute(){
+  var h = navOverride || (location.hash||"").replace(/^#/,"");
+  if(!h) h = "/";
+  return ROUTES[h] ? h : "/";
+}
+
+/* ---------- welcome card (first visit only) ---------- */
+var welcomeWrap = null, welcomeTimer = null, welcomeDone = false;
+function dismissWelcome(record){
+  if(welcomeDone || !welcomeWrap) return; welcomeDone = true;
+  if(welcomeTimer){ clearTimeout(welcomeTimer); welcomeTimer = null; }
+  if(record) store("sbm_welcome","1");
+  if(welcomeWrap){
+    welcomeWrap.classList.add("leaving");
+    setTimeout(function(){ if(welcomeWrap && welcomeWrap.parentNode) welcomeWrap.parentNode.removeChild(welcomeWrap); welcomeWrap = null; }, 450);
+  }
+}
+function maybeWelcome(){
+  if(read("sbm_welcome")==="1") return;
+  welcomeWrap = document.getElementById("welcome-wrap");
+  if(!welcomeWrap) return;
+  welcomeWrap.classList.add("show");
+  var card = document.getElementById("welcome-card");
+  if(card) card.addEventListener("click", function(){ dismissWelcome(true); });
+  welcomeTimer = setTimeout(function(){ dismissWelcome(true); }, 2500);
+  window.addEventListener("scroll", function onScroll(){ window.removeEventListener("scroll", onScroll); dismissWelcome(true); }, {passive:true});
+}
+
+/* ---------- router ---------- */
+var mapInit = false;
+function render(){
+  var r = currentRoute();
+  var sections = document.querySelectorAll(".route");
+  for(var i=0;i<sections.length;i++){
+    sections[i].classList.toggle("active", sections[i].id === ROUTES[r]);
+  }
+  var links = document.querySelectorAll("[data-route-link]");
+  for(var j=0;j<links.length;j++){
+    links[j].classList.toggle("active", links[j].getAttribute("data-route-link") === r);
+  }
+  document.title = TITLES[r];
+  window.scrollTo(0,0);
+  dismissWelcome(true);
+  if(r === "/lab") refreshMap();
+  requestAnimationFrame(updatePlane);
+  observeReveals();
+}
+window.addEventListener("hashchange", render);
+
+/* Direct navigation: switch views on click without depending on the
+   browser honouring fragment navigations (some in-app file previews
+   swallow them). Works everywhere scripts run. */
+var navOverride = null;
+function go(path){
+  if(!ROUTES[path]) path = "/";
+  navOverride = path;
+  try{ if(location.hash !== "#"+path) location.hash = "#"+path; }catch(e){}
+  render();
+  navOverride = null;
+}
+document.addEventListener("click", function(e){
+  var t = e.target;
+  var a = (t && t.closest) ? t.closest('a[href^="#/"]') : null;
+  if(!a) return;
+  if(e.preventDefault) e.preventDefault();
+  go(a.getAttribute("href").slice(1));
+});
+
+/* ---------- reveal on scroll ---------- */
+var revealObs = null;
+function observeReveals(){
+  var els = document.querySelectorAll(".route.active .fade-up:not(.on)");
+  if(!("IntersectionObserver" in window)){ els.forEach(function(e){e.classList.add("on");}); return; }
+  if(!revealObs){
+    revealObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add("on"); revealObs.unobserve(en.target); } });
+    }, {threshold:.12});
+  }
+  els.forEach(function(e){ revealObs.observe(e); });
+}
+
+/* ---------- journey plane on the dashed line ---------- */
+var tlPlane = null, tlBox = null;
+function updatePlane(){
+  if(!tlPlane) { tlPlane = document.getElementById("tl-plane"); tlBox = document.getElementById("tl"); }
+  if(!tlPlane || !tlBox) return;
+  if(!document.getElementById("r-journey").classList.contains("active")) return;
+  var rect = tlBox.getBoundingClientRect();
+  var vh = window.innerHeight || document.documentElement.clientHeight;
+  var p = (vh*0.55 - rect.top) / rect.height;
+  if(p < 0) p = 0; if(p > 1) p = 1;
+  tlPlane.style.top = (p*100).toFixed(2) + "%";
+  /* light up nodes as the plane passes */
+  var nodes = tlBox.querySelectorAll(".tl-node");
+  nodes.forEach(function(n){
+    var nr = n.getBoundingClientRect();
+    n.classList.toggle("lit", (nr.top + nr.height*0.25) < vh*0.55);
+  });
+}
+var ticking = false;
+window.addEventListener("scroll", function(){
+  if(!ticking){ ticking = true; requestAnimationFrame(function(){ updatePlane(); ticking = false; }); }
+}, {passive:true});
+window.addEventListener("resize", updatePlane);
+
+/* ---------- terminal ---------- */
+var termBody = null, termInput = null;
+function tprint(html, cls){
+  if(!termBody) return;
+  var d = document.createElement("div");
+  d.className = "tline" + (cls ? " " + cls : "");
+  d.innerHTML = html;
+  termBody.appendChild(d);
+  termBody.scrollTop = termBody.scrollHeight;
+}
+function tprintCmd(cmd){
+  tprint('<span class="dim">badrul@site:~$</span> <span class="ok"></span>');
+  var last = termBody.lastChild.querySelector(".ok");
+  last.textContent = cmd;
+}
+var COMMANDS = {
+  help: function(){
+    tprint('<span class="ok">Available commands:</span>');
+    tprint('  <b>about</b>    — who is behind this site');
+    tprint('  <b>journey</b>  — fly to the career timeline');
+    tprint('  <b>work</b>     — fly to the work overview');
+    tprint('  <b>contact</b>  — how to reach me');
+    tprint('  <b>clear</b>    — clear the terminal');
+  },
+  about: function(){
+    tprint('Syed Badrul Muneer — Product Manager, AI &amp; Semiconductors at Intel.');
+    tprint('Embedded and firmware engineer turned product thinker.');
+    tprint('12 years in, since 2014. Based in Glendale, Arizona.');
+  },
+  journey: function(){
+    tprint('<span class="dim">Routing to #/journey …</span>');
+    setTimeout(function(){ go("/journey"); }, 450);
+  },
+  work: function(){
+    tprint('<span class="dim">Routing to #/work …</span>');
+    setTimeout(function(){ go("/work"); }, 450);
+  },
+  contact: function(){
+    tprint('Email: <a href="mailto:contact@badrulmuneer.com">contact@badrulmuneer.com</a>');
+    tprint('<span class="dim">The inbox is the fastest runway.</span>');
+  },
+  clear: function(){ if(termBody) termBody.innerHTML = ""; }
+};
+function runCommand(raw){
+  var cmd = (raw||"").trim().toLowerCase();
+  tprintCmd(raw.trim());
+  if(!cmd) return;
+  if(COMMANDS[cmd]){ COMMANDS[cmd](); return; }
+  tprint('<span class="dim">Command not found: "' + cmd.replace(/</g,"&lt;") + '". Type \'help\' for available commands.</span>');
+}
+function initTerminal(){
+  termBody = document.getElementById("term-body");
+  termInput = document.getElementById("term-input");
+  if(!termBody || !termInput) return;
+  tprint('<span class="ok">Terminal ready.</span> <span class="dim">Type \'help\' to list commands.</span>');
+  termInput.addEventListener("keydown", function(e){
+    if(e.key === "Enter"){ runCommand(termInput.value); termInput.value = ""; }
+  });
+  document.getElementById("term").addEventListener("click", function(){
+    if(window.getSelection().toString() === "") termInput.focus();
+  });
+}
+
+/* ---------- map (5 cities — city level) ---------- */
+var CITIES = [
+  {name:"Srinagar, India", lat:34.0837, lng:74.7973},
+  {name:"London, UK", lat:51.5074, lng:-0.1278},
+  {name:"Portland, Oregon", lat:45.5152, lng:-122.6784},
+  {name:"Raleigh, North Carolina", lat:35.7796, lng:-78.6382},
+  {name:"Glendale, Arizona", lat:33.539, lng:-112.186}
+];
+var mapObj = null, mapMarker = null, mapCityIdx = 4;
+function showCity(i){
+  mapCityIdx = i;
+  var c = CITIES[i];
+  document.querySelectorAll(".map-tab").forEach(function(b, bi){
+    b.classList.toggle("is-active", bi === i);
+    b.setAttribute("aria-selected", bi === i ? "true" : "false");
+  });
+  var label = document.getElementById("map-city");
+  if(label) label.textContent = c.name;
+  var mapEl = document.getElementById("map");
+  if(mapEl) mapEl.setAttribute("aria-label", "Map centered on " + c.name);
+  if(mapObj){
+    mapObj.invalidateSize();
+    mapObj.setView([c.lat, c.lng], 11, {animate:true});
+    if(mapMarker){ mapMarker.setLatLng([c.lat, c.lng]); mapMarker.setPopupContent(c.name).openPopup(); }
+  }
+}
+function refreshMap(){
+  if(!mapInit){ initMap(); return; }
+  if(mapObj){
+    /* route sections are display:none when inactive — recalc once visible
+       so the next setView centers on the true container size */
+    requestAnimationFrame(function(){ mapObj.invalidateSize(); });
+    setTimeout(function(){ mapObj.invalidateSize(); }, 150);
+  }
+}
+function initMap(){
+  if(mapInit) return; mapInit = true;
+  var el = document.getElementById("map");
+  if(!el) return;
+  if(!window.L){
+    el.innerHTML = '<p class="map-note">Map unavailable offline — based in Glendale, Arizona.</p>';
+    var tabs = document.querySelector(".map-tabs");
+    if(tabs) tabs.style.display = "none";
+    return;
+  }
+  try{
+    var c = CITIES[mapCityIdx];
+    mapObj = L.map("map", {scrollWheelZoom:false}).setView([c.lat, c.lng], 11);
+    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution:'© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      maxZoom: 19
+    }).addTo(mapObj);
+    mapMarker = L.marker([c.lat, c.lng]).addTo(mapObj).bindPopup(c.name).openPopup();
+    setTimeout(function(){ mapObj.invalidateSize(); }, 350);
+    window.addEventListener("resize", function(){ if(mapObj) mapObj.invalidateSize(); });
+    document.querySelectorAll(".map-tab").forEach(function(b){
+      b.addEventListener("click", function(){ showCity(parseInt(b.getAttribute("data-city"), 10)); });
+    });
+  }catch(e){
+    el.innerHTML = '<p class="map-note">Map could not load — based in Glendale, Arizona.</p>';
+  }
+}
+
+/* ---------- theme (day / night) ---------- */
+function setTheme(mode){
+  document.documentElement.setAttribute("data-theme", mode);
+  try{ localStorage.setItem("badrul-theme", mode); }catch(e){}
+  var dark = mode === "dark";
+  var btn = document.getElementById("theme-toggle");
+  if(btn){
+    btn.setAttribute("aria-pressed", dark ? "true" : "false");
+    btn.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
+    var knob = btn.querySelector(".tt-knob");
+    if(knob) knob.textContent = dark ? "\u263E" : "\u2600";
+  }
+  var meta = document.querySelector('meta[name="theme-color"]');
+  if(meta) meta.setAttribute("content", dark ? "#0C1526" : "#F6F1E7");
+}
+function initTheme(){
+  var mode = null;
+  try{ mode = localStorage.getItem("badrul-theme"); }catch(e){}
+  if(mode !== "dark" && mode !== "light"){
+    mode = (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) ? "dark" : "light";
+  }
+  document.body.classList.add("tm");
+  setTheme(mode);
+  var btn = document.getElementById("theme-toggle");
+  if(btn) btn.addEventListener("click", function(){
+    setTheme(document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark");
+  });
+}
+
+/* ---------- boot ---------- */
+document.addEventListener("DOMContentLoaded", function(){
+  initTheme();
+  initTerminal();
+  render();
+  maybeWelcome();
+});
+})();
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Syed Badrul Muneer",
+  "url": "https://www.badrulmuneer.com/",
+  "jobTitle": "Product Manager, AI & Semiconductors",
+  "worksFor": {"@type": "Organization", "name": "Intel"},
+  "homeLocation": {"@type": "City", "name": "Glendale, Arizona"},
+  "sameAs": ["https://github.com/janejasminjan"]
+}
+</script>
+</body>
+</html>
